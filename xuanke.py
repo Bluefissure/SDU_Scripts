@@ -10,10 +10,9 @@ import json
 import http.cookiejar
 import time
 
-def login():
+def login(username,password):
 	urlLogin='http://bkjwxk.sdu.edu.cn/b/ajaxLogin'
-	username = input("请输入学号:\n")
-	password = getpass.getpass("请输入密码(回显关闭):\n")
+	
 	data = {
 		"j_username": username,
 		"j_password": password,
@@ -120,19 +119,24 @@ def checkLeft(kch,kxh,cookie):
 
 
 try:
-	cookie = login()
+	username = input("请输入学号:\n")
+	password = getpass.getpass("请输入密码(回显关闭):\n")
+	cookie = login(username,password)
 	kch = input("请输入课程号\n")
 	kxh = input("请输入课序号\n")
 	dT = input("请输入刷新时间(秒):\n")
-	if(int(dT)<1):
+	if(float(dT)<1):
 		print("刷新频率太快，下降至1次/秒")
 		dT=1
 	iterator = 0
 	while(True):
-		iterator =iterator + 1
+		iterator = iterator + 1
+		if(iterator % 600 ==0):
+			print("Cookie expire, relogining...")
+			cookie = login(username,password)
 		print("开始第%d次尝试，时间为%s"%(iterator,time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))))
 		checkLeft(kch,kxh,cookie)
-		time.sleep(int(dT))
+		time.sleep(float(dT))
 
 except Exception as e:
 	print("Error: %s"%e)
