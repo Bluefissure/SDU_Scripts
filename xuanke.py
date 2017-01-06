@@ -1,6 +1,5 @@
 #!/usr/bin/python  
 #Author: Bluefissure
-#Update time: 2017-1-5
 import sys
 import urllib
 import urllib.request
@@ -91,6 +90,8 @@ def checkLeft(kch,kxh,cookie):
 			opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 			r = opener.open(request) 
 			response = r.read().decode('utf-8')
+			if("login" in response):
+				return False
 			jsondata = json.loads(response)
 
 			totPage = int(jsondata["object"]["totalPages"])
@@ -131,11 +132,10 @@ try:
 	iterator = 0
 	while(True):
 		iterator = iterator + 1
-		if(iterator % 600 ==0):
-			print("Cookie expire, relogining...")
-			cookie = login(username,password)
 		print("开始第%d次尝试，时间为%s"%(iterator,time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))))
-		checkLeft(kch,kxh,cookie)
+		if(not checkLeft(kch,kxh,cookie)):
+			print("Cookie expire, relogining......")
+			cookie = login(username,password)
 		time.sleep(float(dT))
 
 except Exception as e:
