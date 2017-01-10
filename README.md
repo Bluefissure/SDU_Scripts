@@ -4,5 +4,7 @@ An auto-selecting-course script written in python. Available on SDU Academic Aff
 
 ##Usage:
 
-- Python3 required
-- Test on the system [Here](http://bkjwxk.sdu.edu.cn/ "Title")
+- `python3 xuanke.py`
+
+##Test
+- [Here](http://bkjwxk.sdu.edu.cn/ "Title")
