@@ -92,15 +92,15 @@ def checkLeft(kch,kxh,cookie):
 			r = opener.open(request) 
 			response = r.read().decode('utf-8')
 			if("login" in response):
-				return False
+				return 2 #Cookie espire
 			jsondata = json.loads(response)
 
 			totPage = int(jsondata["object"]["totalPages"])
 			curPage = curPage + 1
 
 			for item in jsondata["object"]["resultList"]:
+				#print(item.get("KXH"))
 				if(int(item.get("KXH"))==int(kxh)):
-					print(item)
 					find = True
 					if(int(item.get("kyl"))>0):
 						if(xuanke(kch,kxh,cookie)):
@@ -109,10 +109,9 @@ def checkLeft(kch,kxh,cookie):
 					else:
 						print("课程\"%s\"课余量不足，您需要等待至少 %s 人退课"%(item.get("KCM"),-int(item.get("kyl"))+1))
 					break
-
-			if(not find):
-				print("找不到该课程，请确认课程号、课序号!")
-				sys.exit()
+		if(not find):
+			print("找不到该课程，请确认课程号、课序号!")
+			sys.exit()
 	except Exception as e:
 		print("Check Error: %s"%e)
 
@@ -134,9 +133,12 @@ try:
 	while(True):
 		iterator = iterator + 1
 		print("开始第%d次尝试，时间为%s"%(iterator,time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))))
-		if(not checkLeft(kch,kxh,cookie)):
-			print("Cookie expire, relogining......")
+		status = checkLeft(kch,kxh,cookie)
+		if(status == 2 ):
+			print("Cookie过期，正在重新登录......")
 			cookie = login(username,password)
+		else:
+			pass
 		time.sleep(float(dT))
 
 except Exception as e:
