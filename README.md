@@ -2,13 +2,13 @@
 
 An auto-selecting-course script written in python. Available on SDU Academic Affair System(TsingHua Version 2015).
 
-##Requirement
+## Requirement
 - Python3
 
-##Use:
+## Use:
 
 - `python3 xuanke.py`
 
-##About
+## About
 - [Test Here](http://bkjwxk.sdu.edu.cn/ "Title")
 - [Blog](https://bluefissure.com/archives/194 "Title")
