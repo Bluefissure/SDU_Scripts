@@ -9,10 +9,11 @@ import getpass
 import json
 import http.cookiejar
 import time
-
+urlbase='http://bkjwxk.sdu.edu.cn'
+#urlbase='http://202.194.15.19' #If domain cannot be accessed
 def login(username,password):
-	urlLogin='http://bkjwxk.sdu.edu.cn/b/ajaxLogin'
-	#urlLogin='http://202.194.15.19/b/ajaxLogin'  #If domain cannot be accessed
+	urlLogin=urlbase+'/b/ajaxLogin'
+	
 	data = {
 		"j_username": username,
 		"j_password": password,
@@ -23,7 +24,7 @@ def login(username,password):
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
 			'Accept': '*/*',
-			'Origin': 'http://bkjwxk.sdu.edu.cn',
+			'Origin': urlbase+'',
 			'Connection': 'keep-alive',
 			'Accept-Language': 'zh-CN,zh;q=0.8',
 			'Accept-Encoding':' gzip, deflate',
@@ -43,11 +44,12 @@ def login(username,password):
 		return cookie;
 	except Exception as e:
 		print("Login Error: %s"%e)
+		sys.exit()
 
 
 def xuanke(kch,kxh,cookie):
 	try:
-		urlXuanke='http://bkjwxk.sdu.edu.cn/b/xk/xs/add/%s/%s'%(kch,kxh)
+		urlXuanke=urlbase+'/b/xk/xs/add/%s/%s'%(kch,kxh)
 		request = urllib.request.Request(url=urlXuanke)
 		cj = cookie
 		opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
@@ -62,7 +64,7 @@ def xuanke(kch,kxh,cookie):
 
 def checkLeft(kch,kxh,cookie):
 	try:
-		urlCheck='http://bkjwxk.sdu.edu.cn/b/xk/xs/kcsearch'
+		urlCheck=urlbase+'/b/xk/xs/kcsearch'
 		curPage = 1
 		totPage = 100
 		find = False
@@ -140,6 +142,5 @@ try:
 		else:
 			pass
 		time.sleep(float(dT))
-
 except Exception as e:
 	print("Error: %s"%e)
