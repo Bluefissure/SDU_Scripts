@@ -12,7 +12,7 @@ import time
 
 def login(username,password):
 	urlLogin='http://bkjwxk.sdu.edu.cn/b/ajaxLogin'
-	
+	#urlLogin='http://202.194.15.19/b/ajaxLogin'  #If domain cannot be accessed
 	data = {
 		"j_username": username,
 		"j_password": password,
