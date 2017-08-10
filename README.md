@@ -1,6 +1,6 @@
 # Xuanke Script
 ![build](https://api.travis-ci.org/Bluefissure/XuankeScript.svg?branch=master)
-[![license](https://img.shields.io/badge/license-GPL-blue.svg)]()
+[![license](https://img.shields.io/badge/license-GPL-blue.svg)](https://github.com/Bluefissure/XuankeScript/blob/master/LICENSE)
 
 
 An auto-selecting-course script written in python. Available on SDU Academic Affair System(TsingHua Version 2015).
