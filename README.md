@@ -1,5 +1,5 @@
 # SDU Scripts
-![build](https://api.travis-ci.org/Bluefissure/XuankeScript.svg?branch=master)
+![build](https://travis-ci.org/Bluefissure/SDU_Scripts.svg?branch=master)
 [![license](https://img.shields.io/badge/license-GPL-blue.svg)](https://github.com/Bluefissure/XuankeScript/blob/master/LICENSE)
 
 ## Scripts
