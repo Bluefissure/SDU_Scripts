@@ -9,6 +9,7 @@ import getpass
 import json
 import http.cookiejar
 import time
+from hashlib import md5
 urlbase='http://bkjwxk.sdu.edu.cn'
 #urlbase='http://202.194.15.19' #If domain cannot be accessed
 def login(username,password):
