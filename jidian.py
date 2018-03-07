@@ -2,6 +2,8 @@
 #coding=utf-8
 #Author: Bluefissure
 import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import requests
 import getpass
 import json
