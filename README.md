@@ -1,11 +1,12 @@
 # SDU Scripts
 ![build](https://travis-ci.org/Bluefissure/SDU_Scripts.svg?branch=master)
 [![license](https://img.shields.io/badge/license-GPL-blue.svg)](https://github.com/Bluefissure/XuankeScript/blob/master/LICENSE)
+This project is no longer maintained since I've graduated from SDU.
 
 ## Scripts
-- An auto-selecting-course script written in python. 
+- An auto-choosing-course script written in python. 
 - An auto-calculating score script written in python.
-- An auto-teaching-scoring script in js [tampermonkey](http://tampermonkey.net/).
+- An auto-teaching-scoring script written in js [tampermonkey](http://tampermonkey.net/).
 
 
 ## Requirement
